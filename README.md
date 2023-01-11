@@ -1,5 +1,13 @@
 # Reducers
+Advanced State Management 
+Reducers  v. useState
 
+1. write a function that performs an action on the state = dispatchedAction({state, type})
+2. Context, Provider = { state, dispatch }
+3. declare handleFunction(event) to call dispatchFrom2() on dispatchedAction(event.target.value) from 1.
+4. return a form element that is wrapped around 2 inputs whos values are state.username and state.password and whos onChange={the handleFunction(event) that we wrote in 3 but w/o the (event) so it remains a declaration not a call and will not be called until onChange}
+5. 
+6. 
 ## Demo
 
 https://github.com/alchemy-adv-fullstack/adv-fullstack-reducer-demo/
