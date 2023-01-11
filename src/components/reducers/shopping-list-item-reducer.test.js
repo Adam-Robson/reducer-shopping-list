@@ -1,5 +1,5 @@
-describe('shopping-list-item-reducer', () => {
-  it('passes', () => {
+// describe('shopping-list-item-reducer', () => {
+//   it('passes state', () => {
 
-  });
-});
+//   });
+// });

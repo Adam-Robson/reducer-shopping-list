@@ -1,5 +1,12 @@
+import React, { useContext } from 'react';
+import { Context } from '../../context/ContextProvider';
+import ShoppingList from './ShoppingList/ShoppingList';
+
 export default function ShoppingListPage() {
-  return <section>
-    <h1>My Shopping List</h1>
-  </section>;
+  const { state, dispatch } = useContext(Context);
+
+  return 
+  <>
+    <ShoppingList shoppingList={ state.shoppingList } />
+  </>;
 }
