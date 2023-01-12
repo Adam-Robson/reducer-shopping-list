@@ -1,29 +1,12 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { Context } from '../../context/ContextProvider';
-import { getShoppingListItems } from '../../services/shopping-list-items';
-import { 
-  listLoadSuccessAction, 
-  listLoadStartAction,
-  listLoadErrorAction,
-  newItemBodyChange,
-} from '../../actions/list-actions';
+import { createShoppingListItem } from '../../services/shopping-list-items';
 import ShoppingList from './ShoppingList/ShoppingList';
 import ShoppingListForm from './ShoppingListForm/ShoppingListForm';
-
+import { newItemBodyChange } from '../actions/list-actions';
+import { postListEffects } from '../../effects/postListEffects';
 export default function ShoppingListPage() {
   const { state, dispatch } = useContext(Context);
-
-  useEffect(() => {
-    (async () => {
-      dispatch(listLoadStartAction());
-      try {
-        const items = await getShoppingListItems();
-        dispatch(listLoadSuccessAction(items));
-      } catch (err) {
-        dispatch(listLoadErrorAction(err));
-      }
-    }); 
-  }, []);
   
   return (
     <>
@@ -31,6 +14,10 @@ export default function ShoppingListPage() {
         body={ state.newItemBody }
         onBodyChange={(newItemBody) => {
           dispatch(newItemBodyChange(newItemBody));
+        } }
+        onSubmit={ async (newBodyItem) => {
+          await createShoppingListItem(newBodyItem);
+          postListEffects(dispatch);
         } } />
       { state.loadingMode === 'loading' 
         ? <span>Loading!</span>

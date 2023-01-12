@@ -1,13 +1,18 @@
 
 export default function ShoppingListForm({ 
   newItemBody, 
-  onBodyChange }) {
+  onBodyChange,
+  onSubmit }) {
   return (
     <>
-      <textarea value={ newItemBody }  onChange={(ev) => {
-        onBodyChange(ev.target.value);
-      } } />
-      <button type="submit">submit</button> 
+      <form onSubmit={() => {
+        onSubmit(newItemBody);
+      } }>
+        <textarea value={ newItemBody }  onChange={(ev) => {
+          onBodyChange(ev.target.value);
+        } } />
+        <button type="submit">submit</button> 
+      </form>
     </>
   );
 }

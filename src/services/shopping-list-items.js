@@ -23,11 +23,11 @@ export async function getShoppingListItem(shoppingListItemId) {
   return checkError(response);
 }
 
-export async function createShoppingListItem(fields) {
+export async function createShoppingListItem(newItembody) {
   const response = await client
     .from('reducer')
     .insert({
-      ...fields,
+      newItembody, 
     })
   ;
   return checkError(response);
