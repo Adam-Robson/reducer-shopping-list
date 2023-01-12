@@ -1,4 +1,4 @@
-import ShoppingListItem from './ShoppingListItem';
+import ShoppingListItem from '../ShoppingListItem/ShoppingListItem.jsx';
 
 const ShoppingList = () => {
   return (

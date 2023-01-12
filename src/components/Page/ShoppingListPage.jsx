@@ -1,21 +1,29 @@
 import { useContext, useEffect } from 'react';
 import { Context } from '../../context/ContextProvider';
 import { getShoppingListItems } from '../../services/shopping-list-items';
-import { shoppingListLoadSuccessAction } from '../../actions/shopping-list';
+import { 
+  listSuccessAction, 
+  listStartAction 
+} from '../../actions/list-actions';
 import ShoppingList from './ShoppingList/ShoppingList';
 
 export default function ShoppingListPage() {
   const { state, dispatch } = useContext(Context);
+
   useEffect(() => {
     (async () => {
+      dispatch(listStartAction());
       const items = await getShoppingListItems();
-      const action = shoppingListLoadSuccessAction(items);
-      dispatch(action);
+      dispatch(listSuccessAction(items));
     }); 
   }, []);
+  
   return (
     <>
-      <ShoppingList shoppingList={ state.shoppingList } />
+      { state.loadingMode === 'loading' 
+        ? <span>Loading!</span>
+        : <ShoppingList shoppingList={ state.shoppingList } /> }
+      
     </>
   );
 }
