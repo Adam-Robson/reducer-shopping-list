@@ -6,8 +6,8 @@ import {
 } from 'react-router-dom';
 import Layout from './Page/Layout.jsx';
 import './Design.css';
-import ShoppingListPage from './Page/ShoppingListPage.jsx';
-import ShoppingList from './Page/ShoppingList/ShoppingList.jsx';
+import Page from './Page/Page.jsx';
+import List from './Page/List/List.jsx';
 import { ContextProvider } from '../context/ContextProvider.jsx';
 
 export default function App() {
@@ -16,9 +16,9 @@ export default function App() {
       <ContextProvider>
         <Routes>
           <Route element={<Layout />}>
-            <Route index element={<ShoppingListPage />} />
+            <Route index element={<Page />} />
           </Route>
-          <Route to="/shoppinglist" element={<ShoppingList />} />
+          <Route to="/list" element={<List />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </ContextProvider>

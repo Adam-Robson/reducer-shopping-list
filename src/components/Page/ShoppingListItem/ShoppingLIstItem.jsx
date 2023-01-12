@@ -1,10 +1,9 @@
-const ShoppingListItem = ({ item }) => {
+const ShoppingListItem = ({ listItem, handleViewedItem }) => {
   return (
     <>
-      {item.id}
-      {item.item}
-      {item.complete}
-      {item.quantity}
+      <input type="checkbox" value={ listItem.viewed } onChange={ () => {
+        handleViewedItem(!listItem.viewed);
+      }} />
       
     </>
   );

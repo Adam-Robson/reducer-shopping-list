@@ -15,12 +15,8 @@ export const ContextProvider = ({ children }) => {
     reducerLogger(reducer), 
     initialState()
   );
-  const contextObj = { state, dispatch };
 
-  return <Context.Provider 
-    value={ { 
-      contextObj
-    } }>
+  return <Context.Provider value={ { state, dispatch } }>
     {children}
   </Context.Provider>;
 };

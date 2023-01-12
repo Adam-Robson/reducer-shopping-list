@@ -1,4 +1,4 @@
-export const reducerLogger = (reducer) => {
+export const log = (reducer) => {
   return (state, action) => {
     console.info('Before', state);
     console.info('After', action);

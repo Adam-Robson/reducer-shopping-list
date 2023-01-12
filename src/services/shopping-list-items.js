@@ -1,54 +1,54 @@
 import { client, checkError } from './client.js';
 
-export async function getShoppingListItems() {
-  const response = await client
+export async function getItems() {
+  const res = await client
     .from('reducer')
     .select(`
       *
 `)
     .order('created_at', { ascending: false })
   ;
-  return checkError(response);
+  return checkError(res);
 }
 
-export async function getShoppingListItem(shoppingListItemId) {
-  const response = await client
+export async function getItem(itemId) {
+  const res = await client
     .from('reducer')
     .select(`
       *
 `)
-    .match({ id: shoppingListItemId })
+    .match({ id: itemId })
     .single()
   ;
-  return checkError(response);
+  return checkError(res);
 }
 
-export async function createShoppingListItem(user, newItembody) {
-  const response = await client
+export async function createItem(user, newItemText) {
+  const res = await client
     .from('reducer')
     .insert({
-      newItembody, 
+      newItemText, 
       user_id: '0000'
     });
-  return checkError(response);
+  return checkError(res);
 }
 
-export async function updateShoppingItem(shoppingItemId, fields) {
-  const response = await client
+export async function updateItem(itemId, body) {
+  const res = await client
     .from('reducer')
     .update({
-      ...fields,
+      ...body,
     })
-    .eq('id', shoppingItemId)
+    .eq('id', itemId)
   ;
-  return checkError(response);
+  return checkError(res);
 }
 
-export async function deleteShoppingItem(shoppingItemId) {
-  const response = await client
+export async function deleteItem(itemId) {
+  const res = await client
     .from('reducer')
     .delete()
-    .eq('id', shoppingItemId)
+    .eq('id', itemId)
   ;
-  return checkError(response);
+  return checkError(res);
 }

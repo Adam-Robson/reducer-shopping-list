@@ -1,11 +1,15 @@
 import ShoppingListItem from '../ShoppingListItem/ShoppingListItem.jsx';
 
-const ShoppingList = () => {
+const ShoppingList = ({ itemList, handleViewedItem }) => {
   return (
     <>
       <ol>
-        {ShoppingList.map(item => {
-          return <li key={item.id}><ShoppingListItem item={ item } /></li>;
+        {itemList.map(item => {
+          <li key={item.id}>
+            <ShoppingListItem item={ item } handleViewedItem={(viewed) => {
+              handleViewedItem(item.id, viewed);
+            } } />
+          </li>;
         })}
       </ol>
       
