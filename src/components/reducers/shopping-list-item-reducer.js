@@ -20,6 +20,12 @@ export const reducer = (state, action) => {
         list: action.list,
         loadingMode: 'success'
       };
+    case 'new-item-body-change':
+      return {
+        ...state,
+        newItemBody: action.newItemBody
+
+      };
     default:
       console.error(`Action type not supported ${action.type}`);
       return state;
