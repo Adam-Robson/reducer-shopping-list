@@ -23,13 +23,13 @@ export async function getShoppingListItem(shoppingListItemId) {
   return checkError(response);
 }
 
-export async function createShoppingListItem(newItembody) {
+export async function createShoppingListItem(user, newItembody) {
   const response = await client
     .from('reducer')
     .insert({
       newItembody, 
-    })
-  ;
+      user_id: '0000'
+    });
   return checkError(response);
 }
 

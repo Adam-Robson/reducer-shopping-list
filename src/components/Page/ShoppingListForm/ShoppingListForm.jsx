@@ -5,7 +5,8 @@ export default function ShoppingListForm({
   onSubmit }) {
   return (
     <>
-      <form onSubmit={() => {
+      <form onSubmit={(e) => {
+        e.preventDefault();
         onSubmit(newItemBody);
       } }>
         <textarea value={ newItemBody }  onChange={(ev) => {

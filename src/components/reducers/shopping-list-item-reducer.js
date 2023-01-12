@@ -1,9 +1,9 @@
 export const initialState = () => {
   return {
     loadingMode: 'at-rest',
-    shoppingList: [
-      { id: '1', body: 'first item' }
-    ]
+    loadingError: null,
+    newItemBody: '',
+    shoppingList: []
   };
 };
 
