@@ -1,6 +1,6 @@
 import { ContextProvider } from '../context/ListContext';
 
-describe('context', () => {
+describe('ListContext', () => {
   test('returns context provider', () => {
     expect((children) => {
       ContextProvider({ 
