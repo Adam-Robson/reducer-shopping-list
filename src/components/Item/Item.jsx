@@ -1,10 +1,18 @@
-
-function Item() {
+export default function Item({ 
+  item, 
+  toggleChecked, 
+}) {
   return (
-    <div>
-      
-    </div>
+    <>
+      <section>
+        <input 
+          type="checkbox"
+          value={ item.checked }
+          onChange={ () => {
+            toggleChecked(!item.checked);
+          } } />
+
+      </section>
+    </>
   );
 }
-
-export default Item;

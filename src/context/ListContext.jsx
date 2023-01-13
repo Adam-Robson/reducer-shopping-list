@@ -3,14 +3,14 @@ import { initialState, reducer } from '../components/reducers/reducer.js';
 import { log } from '../components/reducers/log';
 
 const Context = createContext({
-  state: initialState(),
+  state: initialState,
   reducer 
 });
 
 const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(
     log(reducer),
-    initialState()
+    initialState
   );
   return <Context.Provider 
     value={ { 
@@ -23,11 +23,11 @@ const ContextProvider = ({ children }) => {
 
 const useListContext = () => {
   const context = useContext(Context);
-  context 
-  && 
-  console.error(
-    'useListContext can only be used within ContextProvider'
-  );
+  context === undefined ?
+    console.error(
+      'useListContext can only be used within ContextProvider'
+    ) :
+    context;
 };
 
 export { useListContext, ContextProvider };

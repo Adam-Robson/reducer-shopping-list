@@ -1,7 +1,9 @@
 export const initialState = {
+  text: '',
+  qty: '',
+  list: [],
   loadMode: 'rest',
-  loadError: null,
-  list: []
+  loadError: null
 };
 
 export const reducer = (action, state) => {
@@ -27,7 +29,13 @@ export const reducer = (action, state) => {
     case 'form-text-change-action':
       return {
         ...state,
-        newText: action.newText
+        text: action.newText
+      };
+
+    case 'form-qty-change-action':
+      return {
+        ...state,
+        qty: action.newQty
       };
 
     case 'item-checked-action': {
@@ -44,7 +52,6 @@ export const reducer = (action, state) => {
         newList
       };
     }
-    
     default:
       console.error(`${action.type} is not supported`);
       return state;

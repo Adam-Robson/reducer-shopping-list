@@ -1,9 +1,24 @@
+import Item from '../Item/Item';
 
-function List() {
+function List({ list, handleCheckedById }) {
   return (
-    <div>
-      List
-    </div>
+    <>
+      <ol>
+        {list.map(item => {
+          <li key={ item.id }>
+            <Item item={ item }
+              handleChecked={
+                checked => {
+                  handleCheckedById(
+                    item.id, 
+                    checked);
+                }
+              } />
+          </li>;
+        })
+        }
+      </ol>
+    </>
   );
 }
 
