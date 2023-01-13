@@ -7,7 +7,7 @@ import {
 import { useEffect } from 'react';
 import Layout from './Page/Layout.jsx';
 import './Design.css';
-import ShoppingListPage from './Page/ShoppingListPage.jsx';
+import ShoppingListPage from './Page/Page.jsx';
 import { getItems } from '../services/fetch-utils.js';
 
 export default function App() {
