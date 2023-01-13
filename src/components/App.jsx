@@ -7,7 +7,7 @@ import {
 import Layout from './Page/Layout.jsx';
 import './Design.css';
 import Page from './Page/Page.jsx';
-import List from './Page/List/List.jsx';
+import List from './List/List';
 import { ContextProvider } from '../context/ContextProvider.jsx';
 
 export default function App() {

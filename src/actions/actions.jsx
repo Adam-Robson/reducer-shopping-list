@@ -1,13 +1,13 @@
 export const loadStartAction = () => {
   return {
-    type: 'load-start-action',
+    type: 'load-start-action'
   };
 };
 
-export const loadSuccessAction = (shoppingList) => {
+export const loadSuccessAction = (list) => {
   return {
     type: 'load-success-action',
-    shoppingList
+    list
   };
 };
 
@@ -17,9 +17,17 @@ export const loadErrorAction = () => {
   };
 };
 
-export const newItemTextChange = (newItemText) => {
+export const textChangeAction = (newText) => {
   return {
-    newItemText,
-    type: 'new-item-text-change'
+    newText,
+    type: 'text-change-action'
+  };
+};
+
+export const listChangeAction = (postId, viewed) => {
+  return {
+    postId,
+    viewed,
+    type: 'list-change-action'
   };
 };

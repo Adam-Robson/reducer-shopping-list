@@ -1,17 +1,17 @@
-import Item from '../Item';
+import Item from '../Item/Item';
 
-export default function List({ itemList, handleViewed }) {
+export default function List({ list, handleViewedById }) {
   return (
     <>
       <ol>
         {
-          itemList.map(item => {
+          list.map(item => {
             <li key={ item.id }>
               <Item 
                 item={ item }
                 handleViewed={
                   viewed => {
-                    handleViewed(item.id, viewed);
+                    handleViewedById(item.id, viewed);
                   } } />
             </li>;
           })

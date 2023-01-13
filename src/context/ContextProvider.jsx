@@ -1,9 +1,9 @@
 import { createContext, useReducer } from 'react';
 import { 
   initialState, 
-  reducer, 
-  reducerLogger
-} from '../components/reducers/shopping-list-item-reducer.jsx';
+  reducer
+} from '../components/reducers/reducer.jsx';
+import { log } from '../components/reducers/log';
 
 export const Context = createContext({
   state: initialState(),
@@ -12,7 +12,7 @@ export const Context = createContext({
 
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(
-    reducerLogger(reducer), 
+    log(reducer), 
     initialState()
   );
 

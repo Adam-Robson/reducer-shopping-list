@@ -1,15 +1,16 @@
-
-export default function Item({ listItem, handleViewedItem }) {
+export default function Item({ item, toggleViewed }) {
   return (
     <>
       <section className="list-item-wrap">
         <input 
           type="checkbox" 
-          value={ listItem.viewed } 
+          value={ item.viewed } 
           onChange={ () => {
-            handleViewedItem(!listItem.viewed);
-          } }
-        /></section>
+            toggleViewed(!item.viewed);
+          } } />
+        { item.id }
+        { item.text}
+      </section>
     </>
   );
 }

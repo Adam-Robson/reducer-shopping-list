@@ -1,6 +1,5 @@
-
 export default function Form({
-  newItemBody,
+  newText,
   onSubmit,
   onBodyChange
 }) {
@@ -8,9 +7,9 @@ export default function Form({
     <>
       <form onSubmit={(ev) => {
         ev.preventDefault();
-        onSubmit(newItemBody);
+        onSubmit(newText);
       } }>
-        <textarea value={ newItemBody }
+        <textarea value={ newText }
           onChange={(ev) => {
             onBodyChange(ev.target.value);
           } } />

@@ -23,11 +23,11 @@ export async function getItem(itemId) {
   return checkError(res);
 }
 
-export async function createItem(user, newItemText) {
+export async function createItem(user, newText) {
   const res = await client
     .from('reducer')
     .insert({
-      newItemText, 
+      newText, 
       user_id: '0000'
     });
   return checkError(res);

@@ -1,8 +1,8 @@
-import { reducer, initialState } from './shopping-list-item-reducer';
+import { reducer, initialState } from './reducer';
 import {
   loadStartAction
 } from '../actions/list-actions';
-import { newItemTextChange } from '../../actions/list-actions';
+import { textChangeAction } from '../../actions/actions';
 
 describe('list reducer', () => {
   describe('load list', () => {
@@ -15,10 +15,10 @@ describe('list reducer', () => {
     it('uses text fed by user', () => {
       const oldState = {
         ...initialState(),
-        newItemText: 'iluvu'
+        newText: 'iluvu'
       };
-      const newState = reducer(oldState, newItemTextChange('stillluvnu'));
-      expect(newState.newItemText).toEqual('stillluvnu');
+      const newState = reducer(oldState, textChangeAction('stillluvnu'));
+      expect(newState.newText).toEqual('stillluvnu');
     });
 
   });

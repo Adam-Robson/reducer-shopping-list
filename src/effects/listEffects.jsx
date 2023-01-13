@@ -2,10 +2,10 @@ import {
   loadSuccessAction, 
   loadStartAction,
   loadErrorAction,
-} from '../../actions/list-actions';
-import { getItems } from '../services/shopping-list-items';
+} from '../actions/actions.jsx';
+import { getItems } from '../services/db-requests';
 
-export const postListEffects = async (dispatch) => {
+export const listEffects = async (dispatch) => {
   dispatch(loadStartAction());
   try {
     const items = await getItems();
