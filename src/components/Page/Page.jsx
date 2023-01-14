@@ -1,43 +1,53 @@
-import { useEffect } from 'react';
-import { useListContext } from '../../context/ListContext';
-import { getItems } from '../../services/fetch-utils';
+import { useEffect, useContext } from 'react';
+import { Context } from '../../context/ContextProvder';
 import {
-  loadStartAction,
-  loadSuccessAction,
-  loadErrorAction,
-  formTextChangeAction,
+  formTextAction,
+  formQtyAction,
+  itemCheckedAction
 } from '../../actions/actions';
 import List from '../List/List';
-import Form from '../../Form/Form';
+import Form from '../Form/Form';
+import { listEffects } from '../../effects/listEffects';
 
-const Page = () => {
-  const { state, dispatch } = useListContext();
+
+export default function Page() {
+  const { state, dispatch } = useContext(Context);
 
   useEffect(() => {
-    async () => {
-      dispatch(loadStartAction());
-      try {
-        const items = await getItems();
-        dispatch(loadSuccessAction(items));
-      } catch (err) {
-        dispatch(loadErrorAction(err));
-      }
-    };
+    listEffects(dispatch);
   });
+
+  const changeFormText = (newText) => {
+    dispatch(formTextAction(newText));
+  };
+
+  const changeFormQty = (newQty) => {
+    dispatch(formQtyAction(newQty));
+  };
+
+  const changeCheckbox = (itemId, checked) => {
+    dispatch(itemCheckedAction(itemId, checked));
+  };
   return (
     <>
       <Form 
         text={ state.newText }
-        onTextChange={ (newText) => {
-          dispatch(formTextChangeAction(newText));
-        } } />
+        onTextChange={ changeFormText }
+
+        qty={ state.newQty }
+        onQtyChange={ changeFormQty }
+
+      />
 
       { state.loadingMode ? 
         <p>Loading!</p> : 
-        <List list={ state.list } /> }
+        <List 
+          list={ state.list } 
+          handleCheckedById={ 
+            (itemId, checked) => {
+              changeCheckbox(itemId, checked);
+            } } /> 
+      }
     </>
-  );
-};
-
-
-export default Page;
+  ); 
+}

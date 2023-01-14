@@ -16,17 +16,17 @@ export const loadErrorAction = () => {
   };
 };
 
-export const formTextChangeAction = (newText) => {
+export const formTextAction = (newText) => {
   return {
     ...newText,
-    type: 'form-text-change-action'
+    type: 'form-text-action'
   };
 };
 
-export const formQtyChangeAction = (newQty) => {
+export const formQtyAction = (newQty) => {
   return {
     ...newQty,
-    type: 'form-qty-change-action'
+    type: 'form-qty-action'
   };
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { ContextProvider } from './context/ListContext';
+import { ContextProvider } from './context/ContextProvder';
 import App from './components/App';
 import './reset.css';
 import './global.css';
@@ -14,3 +14,4 @@ root.render(
     </ContextProvider>
   </React.StrictMode>
 );
+

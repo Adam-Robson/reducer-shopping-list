@@ -1,8 +1,8 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useReducer } from 'react';
 import { initialState, reducer } from '../components/reducers/reducer.js';
 import { log } from '../components/reducers/log';
 
-const Context = createContext({
+export const Context = createContext({
   state: initialState,
   reducer 
 });
@@ -21,14 +21,4 @@ const ContextProvider = ({ children }) => {
   </Context.Provider>;
 };
 
-const useListContext = () => {
-  const context = useContext(Context);
-  context === undefined ?
-    console.error(
-      'useListContext can only be used within ContextProvider'
-    ) :
-    context;
-};
-
-export { useListContext, ContextProvider };
-
+export { ContextProvider };

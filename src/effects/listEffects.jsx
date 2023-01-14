@@ -2,7 +2,7 @@ import {
   loadStartAction,
   loadSuccessAction,
   loadErrorAction
-} from '../../actions/actions';
+} from '../actions/actions';
 import { getItems } from '../services/fetch-utils';
 
 export const listEffects = async (dispatch) => {
