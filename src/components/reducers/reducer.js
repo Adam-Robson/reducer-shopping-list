@@ -1,16 +1,17 @@
+import { LOAD_START_ACTION_TYPE } from '../../actions/actions';
+
 export const initialState = {
-  newText: '',
-  newQty: '',
   list: [],
   loadMode: 'rest',
   loadError: null
 };
 
-export const reducer = (action, state) => {
-  switch(action.type) {
+export const reducer = (state, action) => { 
 
-    case 'load-start-action': 
-      return {
+  switch(action.type) { 
+
+    case LOAD_START_ACTION_TYPE:
+      return { 
         ...state,
         loadMode: 'loading'
       };
@@ -26,33 +27,37 @@ export const reducer = (action, state) => {
         loadError: null
       };
 
-    case 'form-text-action':
-      return {
-        ...state,
-        text: action.newText
-      };
-
-    case 'form-qty-action':
-      return {
-        ...state,
-        qty: action.newQty
-      };
-
-    case 'item-checked-action': {
+    case 'item-checked-action': { 
       const newList = [...state.list];
-      const index = newList.findIndex(
+      const newIndex = newList.findIndex(
+      
         item => item.id === action.itemId
       );
-      newList[index] = {
-        ...newList[index],
-        checked: action.checked
+      newList[newIndex] = {
+        ...newList[newIndex],
+        checked: action.checked 
       };
-      return {
+      return { 
         ...state,
-        newList
+        list: newList
       };
     }
     
+    case 'submit-form-action': {
+      const listCopy = [...state.list];
+      const newItem = {
+        id: Date.now(),
+        description: action.description,
+        qty: action.qty,
+        checked: false
+      };
+      listCopy.push(newItem);
+      return {
+        ...state,
+        list: listCopy
+      };
+    }
+
     default:
       console.error(`${action.type} is not supported`);
       return state;

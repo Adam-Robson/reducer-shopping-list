@@ -1,6 +1,6 @@
 export default function Item({ 
   item, 
-  toggleChecked, 
+  handleChecked, 
 }) {
   return (
     <>
@@ -9,9 +9,10 @@ export default function Item({
           type="checkbox"
           value={ item.checked }
           onChange={ () => {
-            toggleChecked(!item.checked);
+            handleChecked(!item.checked);
           } } />
-
+        <p className="description">{ item.description }</p>
+        <p className="qty">{ item.qty }</p>
       </section>
     </>
   );

@@ -1,32 +1,20 @@
+export const LOAD_START_ACTION_TYPE = 'load-start-action';
+
 export const loadStartAction = () => {
   return {
-    type: 'loadStartAction'
+    type: LOAD_START_ACTION_TYPE
   };
 };
 
 export const loadSuccessAction = () => {
   return {
-    type: 'loadSuccessAction'
+    type: 'load-success-action'
   };
 };
 
 export const loadErrorAction = () => {
   return {
-    type: 'loadErrorAction'
-  };
-};
-
-export const formTextAction = (newText) => {
-  return {
-    ...newText,
-    type: 'form-text-action'
-  };
-};
-
-export const formQtyAction = (newQty) => {
-  return {
-    ...newQty,
-    type: 'form-qty-action'
+    type: 'load-error-action'
   };
 };
 
@@ -35,5 +23,13 @@ export const itemCheckedAction = (itemId, checked) => {
     itemId,
     checked,
     type: 'item-checked-action'
+  };
+};
+
+export const submitFormAction = (description, qty) => {
+  return {
+    description,
+    qty,
+    type: 'submit-form-action'
   };
 };

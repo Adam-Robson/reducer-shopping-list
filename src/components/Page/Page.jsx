@@ -1,28 +1,27 @@
 import { useEffect, useContext } from 'react';
 import { Context } from '../../context/ContextProvder';
 import {
-  formTextAction,
-  formQtyAction,
+  submitFormAction,
   itemCheckedAction
 } from '../../actions/actions';
 import List from '../List/List';
 import Form from '../Form/Form';
 import { listEffects } from '../../effects/listEffects';
 
+// the user flow:
+// 1. inputs description and qtyX
+// 2. submit new item X
+// 3. being able to check the checkbox
 
 export default function Page() {
   const { state, dispatch } = useContext(Context);
 
   useEffect(() => {
     listEffects(dispatch);
-  });
+  }, []);
 
-  const changeFormText = (newText) => {
-    dispatch(formTextAction(newText));
-  };
-
-  const changeFormQty = (newQty) => {
-    dispatch(formQtyAction(newQty));
+  const handleSubmit = (description, qty) => {
+    dispatch(submitFormAction(description, qty));
   };
 
   const changeCheckbox = (itemId, checked) => {
@@ -31,23 +30,17 @@ export default function Page() {
   return (
     <>
       <Form 
-        text={ state.newText }
-        onTextChange={ changeFormText }
-
-        qty={ state.newQty }
-        onQtyChange={ changeFormQty }
-
+        onSubmit={ handleSubmit }
       />
 
-      { state.loadingMode ? 
-        <p>Loading!</p> : 
-        <List 
-          list={ state.list } 
-          handleCheckedById={ 
-            (itemId, checked) => {
-              changeCheckbox(itemId, checked);
-            } } /> 
-      }
+      {/* { state.loadMode ? 
+        <p>Loading!</p> :  */}
+      <List 
+        list={ state.list } 
+        handleCheckedById={ 
+          (itemId, checked) => {
+            changeCheckbox(itemId, checked);
+          } } /> 
     </>
   ); 
 }

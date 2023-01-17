@@ -1,30 +1,32 @@
-
+import { useState } from 'react';
 function Form({ 
-  newText, 
-  newQty, 
-  onTextChange, 
-  onQtyChange,
   onSubmit 
 }) {
+
+  const [description, setDescription] = useState('');
+  const [qty, setQty] = useState(1);
+
   return (
     <>
       <form onSubmit={(ev) => {
         ev.preventDefault();
-        onSubmit(newText, newQty);
+        onSubmit(description, qty);
       } }>
 
         <textarea 
-          value={ newText }
+          value={ description }
           onChange={ (ev) => {
-            onTextChange(ev.target.value);
+            setDescription(ev.target.value);
           } } />
 
         <input
-          value={ newQty }
+          type="number"
+          value={ qty }
           onChange={ (ev) => {
-            onQtyChange(ev.target.value);
+            setQty(ev.target.value);
           } } />
-
+          
+        <button type="submit">submit</button>
       </form>
     </>
   );
