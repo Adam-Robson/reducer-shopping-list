@@ -4,15 +4,32 @@ export default function Item({
 }) {
   return (
     <>
-      <section>
+      <section style={ { display: 'flex' } }>
         <input 
+          style={ { marginRight: '40px' }}
           type="checkbox"
           value={ item.checked }
           onChange={ () => {
             handleChecked(!item.checked);
-          } } />
-        <p className="description">{ item.description }</p>
-        <p className="qty">{ item.qty }</p>
+          }
+          } />
+        <p 
+          style={ { 
+            marginRight: '40px' 
+          } } 
+          className="description"
+        >
+          { item.description }
+        </p>
+
+        <p 
+          style={ { 
+            marginRight: '40px'
+          } } 
+          className="qty"
+        >
+          { item.qty }
+        </p>
       </section>
     </>
   );

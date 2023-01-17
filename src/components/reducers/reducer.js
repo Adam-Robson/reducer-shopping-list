@@ -1,4 +1,8 @@
-import { LOAD_START_ACTION_TYPE } from '../../actions/actions';
+import { LOAD_START_ACTION } from '../../actions/actions';
+import { LOAD_SUCCESS_ACTION } from '../../actions/actions';
+import { LOAD_ERROR_ACTION } from '../../actions/actions';
+import { ITEM_CHECKED_ACTION } from '../../actions/actions';
+import { SUBMIT_FORM_ACTION } from '../../actions/actions';
 
 export const initialState = {
   list: [],
@@ -10,24 +14,24 @@ export const reducer = (state, action) => {
 
   switch(action.type) { 
 
-    case LOAD_START_ACTION_TYPE:
+    case LOAD_START_ACTION:
       return { 
         ...state,
         loadMode: 'loading'
       };
     
-    case 'load-success-action':
+    case LOAD_SUCCESS_ACTION:
       return {
         ...state,
         loadMode: 'rest'
       };
     
-    case 'load-error-action':
+    case LOAD_ERROR_ACTION:
       return {
         loadError: null
       };
 
-    case 'item-checked-action': { 
+    case ITEM_CHECKED_ACTION: { 
       const newList = [...state.list];
       const newIndex = newList.findIndex(
       
@@ -43,7 +47,7 @@ export const reducer = (state, action) => {
       };
     }
     
-    case 'submit-form-action': {
+    case SUBMIT_FORM_ACTION: {
       const listCopy = [...state.list];
       const newItem = {
         id: Date.now(),

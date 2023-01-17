@@ -8,12 +8,7 @@ import List from '../List/List';
 import Form from '../Form/Form';
 import { listEffects } from '../../effects/listEffects';
 
-// the user flow:
-// 1. inputs description and qtyX
-// 2. submit new item X
-// 3. being able to check the checkbox
-
-export default function Page() {
+const Page = () => {
   const { state, dispatch } = useContext(Context);
 
   useEffect(() => {
@@ -27,20 +22,24 @@ export default function Page() {
   const changeCheckbox = (itemId, checked) => {
     dispatch(itemCheckedAction(itemId, checked));
   };
+
   return (
     <>
       <Form 
         onSubmit={ handleSubmit }
       />
-
-      {/* { state.loadMode ? 
-        <p>Loading!</p> :  */}
-      <List 
-        list={ state.list } 
-        handleCheckedById={ 
-          (itemId, checked) => {
-            changeCheckbox(itemId, checked);
-          } } /> 
+      {
+        state.loadMode === 'loading' ? 
+          <p>Loading!</p> : 
+          <List 
+            list={ state.list } 
+            handleCheckedById={ 
+              (itemId, checked) => {
+                changeCheckbox(itemId, checked);
+              } } /> 
+      }
     </>
   ); 
-}
+};
+
+export default Page;

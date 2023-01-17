@@ -3,7 +3,7 @@ import Item from '../Item/Item';
 function List({ list, handleCheckedById }) {
   return (
     <>
-      <ol style={ { border: '3px solid red' } }>
+      <ol style={ { height: '500px' } }>
         {
           list.map(item => {
             return <li key={ item.id }>
