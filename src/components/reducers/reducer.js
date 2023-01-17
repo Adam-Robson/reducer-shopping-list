@@ -3,10 +3,14 @@ import { LOAD_SUCCESS_ACTION } from '../../actions/actions';
 import { LOAD_ERROR_ACTION } from '../../actions/actions';
 import { ITEM_CHECKED_ACTION } from '../../actions/actions';
 import { SUBMIT_FORM_ACTION } from '../../actions/actions';
+import { DESCRIPTION_CHANGE_ACTION } from '../../actions/actions';
+import { QTY_CHANGE_ACTION } from '../../actions/actions';
 
 export const initialState = () => {
   return {
     list: [],
+    description: '',
+    qty: Number(0),
     loadMode: 'rest',
     loadError: null
   };
@@ -52,7 +56,6 @@ export const reducer = (state, action) => {
     case SUBMIT_FORM_ACTION: {
       const listCopy = [...state.list];
       const newItem = {
-        id: Date.now(),
         description: action.description,
         qty: action.qty,
         checked: false
@@ -61,6 +64,20 @@ export const reducer = (state, action) => {
       return {
         ...state,
         list: listCopy
+      };
+    }
+
+    case DESCRIPTION_CHANGE_ACTION: {
+      return {
+        ...state,
+        description: action.description
+      };
+    }
+
+    case QTY_CHANGE_ACTION: {
+      return {
+        ...state,
+        qty: action.qty
       };
     }
 
