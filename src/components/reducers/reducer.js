@@ -4,10 +4,12 @@ import { LOAD_ERROR_ACTION } from '../../actions/actions';
 import { ITEM_CHECKED_ACTION } from '../../actions/actions';
 import { SUBMIT_FORM_ACTION } from '../../actions/actions';
 
-export const initialState = {
-  list: [],
-  loadMode: 'rest',
-  loadError: null
+export const initialState = () => {
+  return {
+    list: [],
+    loadMode: 'rest',
+    loadError: null
+  };
 };
 
 export const reducer = (state, action) => { 

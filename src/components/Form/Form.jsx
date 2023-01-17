@@ -21,6 +21,7 @@ function Form({
 
         <input
           type="number"
+          placeholder="#"
           value={ qty }
           onChange={ (ev) => {
             setQty(ev.target.value);

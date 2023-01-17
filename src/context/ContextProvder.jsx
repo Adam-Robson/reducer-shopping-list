@@ -3,14 +3,14 @@ import { initialState, reducer } from '../components/reducers/reducer.js';
 import { log } from '../components/reducers/log';
 
 export const Context = createContext({
-  state: initialState,
+  state: initialState(),
   reducer 
 });
 
 const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(
     log(reducer),
-    initialState
+    initialState()
   );
   return <Context.Provider 
     value={ { 
