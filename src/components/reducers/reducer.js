@@ -40,7 +40,6 @@ export const reducer = (state, action) => {
     case ITEM_CHECKED_ACTION: { 
       const newList = [...state.list];
       const newIndex = newList.findIndex(
-      
         item => item.id === action.itemId
       );
       newList[newIndex] = {

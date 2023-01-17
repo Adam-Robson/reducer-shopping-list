@@ -46,6 +46,8 @@ const Page = () => {
           await createItem(description, qty);
           handleSubmit(state.description, state.qty);
           listEffects(dispatch);
+          dispatch(descriptionChangeAction(''));
+          dispatch(qtyChangeAction(''));
         }  }
       />
       {

@@ -1,18 +1,19 @@
-// import { useState } from 'react';
-function Form({ 
-  // onSubmit,
+export default function Form({ 
+  onSubmit,
   description,
   onDescriptionChange,
   qty,
   onQtyChange 
 }) {
-
-  // const [description, setDescription] = useState('');
-  // const [qty, setQty] = useState(1);
-
   return (
     <>
-      <form>
+      <form
+        onSubmit={
+          (ev) => {
+            ev.preventDefault();
+            onSubmit(description, qty,);
+          }
+        }>
 
         <textarea 
           value={ description }
@@ -35,4 +36,3 @@ function Form({
   );
 }
 
-export default Form;
