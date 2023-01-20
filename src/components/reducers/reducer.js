@@ -1,10 +1,12 @@
-import { LOAD_START_ACTION } from '../../actions/actions';
-import { LOAD_SUCCESS_ACTION } from '../../actions/actions';
-import { LOAD_ERROR_ACTION } from '../../actions/actions';
-import { ITEM_CHECKED_ACTION } from '../../actions/actions';
-import { SUBMIT_FORM_ACTION } from '../../actions/actions';
-import { DESCRIPTION_CHANGE_ACTION } from '../../actions/actions';
-import { QTY_CHANGE_ACTION } from '../../actions/actions';
+import { 
+  LOAD_START_ACTION,
+  LOAD_SUCCESS_ACTION,
+  LOAD_ERROR_ACTION,
+  ITEM_CHECKED_ACTION,
+  SUBMIT_FORM_ACTION, 
+  DESCRIPTION_CHANGE_ACTION, 
+  QTY_CHANGE_ACTION 
+} from '../../actions/actions';
 
 export const initialState = () => {
   return {

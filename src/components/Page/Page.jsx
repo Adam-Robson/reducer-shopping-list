@@ -9,6 +9,7 @@ import {
 import List from '../List/List';
 import Form from '../Form/Form';
 import { listEffects } from '../../effects/listEffects';
+import { itemEffects } from '../../effects/itemEffects';
 import { createItem } from '../../services/fetch-utils';
 
 const Page = () => {
@@ -32,6 +33,7 @@ const Page = () => {
 
   const changeCheckbox = (itemId, checked) => {
     dispatch(itemCheckedAction(itemId, checked));
+    itemEffects(dispatch);
   };
 
   return (

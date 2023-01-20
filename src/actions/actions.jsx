@@ -12,8 +12,9 @@ export const loadStartAction = () => {
   };
 };
 
-export const loadSuccessAction = () => {
+export const loadSuccessAction = (items) => {
   return {
+    ...items,
     type: LOAD_SUCCESS_ACTION
   };
 };
